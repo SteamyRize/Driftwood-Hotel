@@ -138,6 +138,7 @@
 
 footer {
    position: absolute;
+    width: 100%;
 }
 
 input[type=text], input[type=password]{

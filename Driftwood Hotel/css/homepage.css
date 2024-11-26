@@ -172,10 +172,6 @@ section {
    
 }
 
-.darken{
-    filter: brightness(70%);
-}
-
 
 #Rooms {
     height: auto !important;
@@ -187,6 +183,7 @@ section {
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
+   
 }
 
 
@@ -195,6 +192,7 @@ section {
     justify-content: space-evenly;
     flex-direction: column;
     gap: 20px;
+   
 }
 
 
@@ -204,11 +202,14 @@ section {
     height: 20rem;
     background-color: var(--bg-10-);
     position: relative;
+    
+    
 }
 
 .imgWrapper img{
     width: 30rem;
     height: 20rem;
+   
 }
 
 .imgContainer .imgWrapper:nth-child(1)::before {
@@ -401,6 +402,7 @@ img {
 .container .aboutWrapper .aboutusImageContainer img{
     width: 40em;
     height: 20em;
+    
     
 }
 

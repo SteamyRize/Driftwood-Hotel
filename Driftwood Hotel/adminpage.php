@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admindesign.css">
+    <link rel="stylesheet" href="Room-desc.css">
+    <link rel="icon" href="icon.png">
 </head>
 
 <body>
-    <header class="main-header">
-        <div class="logo">LOGO</div>
-        <div class="user-profile">
-            <div class="profile-icon"></div>
-        </div>
+<header class="main-header">
+        <div class="logo"><img src="Drifcombieng.png" id="logopic"></div>
+        
     </header>
 
     <div class="dashboard">
@@ -21,9 +21,13 @@
         <aside class="sidebar">
             <div class="admin-title">ADMIN</div>
             <nav class="menu">
-                <a href="#" class="menu-item active">Status</a>
-                <a href="#" class="menu-item">Room Booking</a>
-                <a href="#" class="menu-item">Manage user account</a>
+                <hr>
+                <a href="adminpage.php" class="menu-item active">Status</a>
+                <hr>
+                <a href="adminpages/roombooking.php" class="menu-item">Room Booking</a>
+                <hr>
+                <a href="adminpages/manageuser.php" class="menu-item">Manage user account</a>
+                <hr>
             </nav>
         </aside>
 

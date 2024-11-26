@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-60-: #202B30;
+    --bg-30-: #384B54;
+    --bg-10-: #FFFFFF;
+    --bg-sub-: whitesmoke;
+    --bg-btn-: #68D2B7;
+    --font-fam-poppins-: "Poppins", sans-serif;
+    --font-fam-montserrat-: "Montserrat", sans-serif;
+}
+
+
+
+.font-poppins {
+  font-family: var(--font-fam-poppins-);
+}
+
+.font-montserrat {
+  font-family: var(--font-fam-montserrat-);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e6f3e6;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #66b266;
+}
+
+.main-header .logo img {
+    height: 50px;
+}
+
+/* Dashboard layout */
+.dashboard {
+    display: flex;
+}
+
+.admin-title{
+    text-align: center;
+     font-family: 'Montserrat';
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar .admin-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar .menu .menu-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+.sidebar .menu .menu-item:hover,
+.sidebar .menu .menu-item.active {
+    background-color: #555;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #C9E6CF;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #66b266;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.content-header h2 {
+    color: #333;
+    margin: 0;
+}
+
+.content-header .inactive {
+    color: gray;
+    font-size: 16px;
+}
+
+/* Room Booking Section */
+.new-room-booking-btn {
+    background-color: #66b266;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.new-room-booking-btn:hover {
+    background-color: #559455;
+}
+
+.new-room-booking-btn .notification {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/* Table Styles */
+.table-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #66b266;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.action-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: #333;
+}

@@ -24,10 +24,10 @@
 
         </nav>
         <div class="auth-btn">
-            <a href="login/login.php">
+            <a href="../../login/login.php">
                 <button class="sign-in-btn">Sign In / Register</button>
             </a>
-            <a href="profile.html">
+            <a href="profile/profile.php">
                 <div class="user-icon"></div>
             </a>
         </div>

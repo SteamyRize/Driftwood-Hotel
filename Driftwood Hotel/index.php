@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/homepage.css">
     <link rel="stylesheet" href="Room-desc.css">
     <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/d1cc49e838.js" crossorigin="anonymous"></script>
 </head>
 
@@ -27,7 +28,7 @@
             <a href="login/login.php">
                 <button class="sign-in-btn">Sign In / Register</button>
             </a>
-            <a href="profile.html">
+            <a href="profile/profile.php">
                 <div class="user-icon"></div>
             </a>
         </div>
@@ -171,6 +172,7 @@
             </div>
         </section>
     </main>
+
     <footer class="footer">
         <div class="social-icons">
             <!-- Twitter X Logo -->
