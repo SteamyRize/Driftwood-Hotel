@@ -1,3 +1,8 @@
+<?php
+require '../../logged_in.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,14 +28,7 @@
             <a href="../../index.php#Contact">Contact Us</a>
 
         </nav>
-        <div class="auth-btn">
-            <a href="../../login/login.php">
-                <button class="sign-in-btn">Sign In / Register</button>
-            </a>
-            <a href="profile/profile.php">
-                <div class="user-icon"></div>
-            </a>
-        </div>
+        <?php SignUser($is_logged_in, $username); ?>
 
     </header>
 

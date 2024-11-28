@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +24,53 @@
 
         </nav>
         <div class="auth-btn">
-            <a href="login/login.php">
+            <a href="../login/login.php">
                 <button class="sign-in-btn">Sign In / Register</button>
             </a>
-            <a href="profile/profile.php">
-                <div class="user-icon"></div>
-            </a>
+           
         </div>
 
     </header>
+
+    <?php
+        require '../db.php';
+
+        $errorMessage;
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $repassword = $_POST['repassword'];
+
+            if ($password !== $repassword) {
+                $errorMessage = "Password doesn't match";
+            } else {
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+                $stmt = $conn->prepare($sql);
+
+                try {
+                    $stmt->execute([
+                        'username' => $username,
+                        'email' => $email,
+                        'password' => $hashed_password
+                    ]);
+                    
+                    header("location: ../login/login.php");
+
+                } catch (PDOException $e) {
+                    if ($e->getCode() == 23000) {
+                        $errorMessage = "Username or email already exists!";
+                    } else {
+                        echo "Error: " . $e->getMessage();
+                    }
+                }
+            }
+        }
+    ?>
+
 
     <!-- Login / Register Container -->
     <div class="container">
@@ -38,14 +78,25 @@
         <div class="login-box">
             <div class="form-section">
                 <h2 class="font-poppins">Register</h2>
-                <form>
-                <input class="font-montserrat" type="text" placeholder="Enter Your Email" required>
-                    <input class="font-montserrat" type="text" placeholder="Enter Your Username" required>
-                    <input class="font-montserrat" type="password" placeholder="Enter Your Password" required>
-                    <input class="font-montserrat" type="password" placeholder="Re-enter Your Password" required>
+
+                <form method = "POST" action= "register.php">
+                <input class="font-montserrat" type="text" name="email" placeholder="Enter Your Email" >
+                    <input class="font-montserrat" type="text" name="username" placeholder="Enter Your Username" >
+                    <input class="font-montserrat" type="password" name="password" placeholder="Enter Your Password" >
+                    <input class="font-montserrat" type="password" name="repassword" placeholder="Re-enter Your Password" >
                     <a href="../login/login.php" class="forgot-password" class="font-poppins">Already have an account? Log-in Now!</a>
+                    
+                    <?php if (!empty($errorMessage)): ?>
+                        <div style="color: red; font-weight: bold;">
+                            <?php echo $errorMessage; ?>
+                        </div>
+                    <?php endif; ?>
+                    
                     <button type="submit" class="submit-btn" class="font-poppins">Confirm</button>
+
+                    
                 </form>
+
             </div>
             <div class="image-section">
                 <img src="lobby.jpg" alt="Hotel Lobby">

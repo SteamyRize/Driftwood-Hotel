@@ -1,3 +1,7 @@
+<?php
+require 'logged_in.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,14 +28,8 @@
             <a href="index.php#Contact">Contact Us</a>
 
         </nav>
-        <div class="auth-btn">
-            <a href="login/login.php">
-                <button class="sign-in-btn">Sign In / Register</button>
-            </a>
-            <a href="profile/profile.php">
-                <div class="user-icon"></div>
-            </a>
-        </div>
+        
+        <?php SignUser($is_logged_in, $username); ?>
 
     </header>
 
@@ -42,12 +40,7 @@
                 <p class="heroTitle">Driftwood Hotel</p>
                 <p class="heroSubtitle">Your serene beachside escape, where the ocean breeze and sandy shores await just steps away.</p>
                 <div class="btnContainer">
-                    <a href="login/login.php">
-                    <button class="customizedBtn">Login</button>
-                    </a>
-                    <a href="rooms.php">
-                    <button class="customizedBtnSecondary">Book Now!</button>
-                    </a>
+                    <?php LoginBookBanner($is_logged_in) ?>
                 </div>
                 </div>
          

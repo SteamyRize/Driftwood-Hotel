@@ -587,3 +587,10 @@ footer i {
 button:hover, a:hover{
   cursor: pointer;
 }
+
+
+.error {
+  color: red; 
+  font-weight: bold; 
+  margin-top: 10px; 
+}

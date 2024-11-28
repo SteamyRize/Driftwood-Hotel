@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +25,45 @@
 
         </nav>
         <div class="auth-btn">
-            <a href="login/login.php">
+            <a href="login.php">
                 <button class="sign-in-btn">Sign In / Register</button>
             </a>
-            <a href="profile.html">
-                <div class="user-icon"></div>
-            </a>
+
         </div>
 
     </header>
+
+    <?php
+
+    require '../logged_in.php';
+        require '../db.php';
+
+        $errorMessage;
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['username' => $username]);
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['username'] = $username; 
+                header("location: ../index.php");
+            } else {
+                $errorMessage = "Incorrect username or password!";
+            }
+        }
+    ?>
+
+
+
 
     <!-- Login / Register Container -->
     <div class="container">
@@ -38,12 +71,22 @@
         <div class="login-box">
             <div class="form-section">
                 <h2 class="font-poppins">Log In</h2>
-                <form>
-                    <input class="font-montserrat" type="text" placeholder="Enter Your Username" required>
-                    <input class="font-montserrat" type="password" placeholder="Enter Your Password" required>
+
+                <form method = "POST" action= "login.php">
+                    <input class="font-montserrat" type="text" name="username" placeholder="Enter Your Username" required>
+                    <input class="font-montserrat" type="password" name="password" placeholder="Enter Your Password" required>
                     <a href="../register/register.php" class="forgot-password" class="font-poppins">Don't have an account? Register Now!</a>
+                    
+                    <?php if (!empty($errorMessage)): ?>
+                        <div style="color: red; font-weight: bold;">
+                            <?php echo $errorMessage; ?>
+                        </div>
+                    <?php endif; ?>
+
                     <button type="submit" class="submit-btn" class="font-poppins">Continue</button>
                 </form>
+
+
             </div>
             <div class="image-section">
                 <img src="oceanfront_restaurant6.jpg" alt="Hotel Lobby">

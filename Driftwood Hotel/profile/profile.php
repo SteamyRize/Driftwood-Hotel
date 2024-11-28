@@ -1,10 +1,14 @@
+<?php
+require '../logged_in.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="../css/admindesign.css">
     <link rel="stylesheet" href="../Room-desc.css">
     <link rel="icon" href="../icon.png">
@@ -12,6 +16,8 @@
 </head>
 
 <body>
+
+
 <header class="main-header">
         <div class="logo"><img src="../Drifcombieng.png" id="logopic"></div>
         <nav class="header-nav">
@@ -23,20 +29,14 @@
             <a href="../index.php#Contact">Contact Us</a>
 
         </nav>
-        <div class="auth-btn">
-            <a href="login/login.php">
-                <button class="sign-in-btn">Sign In / Register</button>
-            </a>
-            <a href="profile.php">
-                <div class="user-icon"></div>
-            </a>
-        </div>
+        <?php SignUser($is_logged_in, $username); ?>
+
 
     </header>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="admin-title">ADMIN</div>
+            <div class="admin-title">PROFILE</div>
             <nav class="menu">
                 <hr>
                 <a href="adminpage.php" class="menu-item active">Profile</a>
@@ -47,17 +47,21 @@
         <!-- Main Content -->
         <div class="content">
             <div class="content-header">
-                <h2>Status</h2><span class="inactive">Room Booking</span>
+               <?php Profile($username); ?>
             </div>
 
-            <!-- Room Booking Section -->
-            <div class="room-booking-section">
-                <button class="new-room-booking-btn">New Room Booking <span class="notification">6</span></button>
-            </div>
+           
 
             <!-- Table Container -->
             <div class="table-container">
-               
+                <?php Info($username, $email); ?>
+
+                
+                    <a href="../logout.php">
+                    <button type="submit" name="logout" class="customizedBtnSecondary" style="float: right;">Log Out</button>
+                    </a>
+              
+                
             </div>
         </div>
     </div>
