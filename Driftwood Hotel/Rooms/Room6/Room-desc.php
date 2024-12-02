@@ -28,7 +28,7 @@ require '../../logged_in.php';
             <a href="../../index.php#Contact">Contact Us</a>
 
         </nav>
-        <?php SignUser($is_logged_in, $username); ?>
+        <?php SignUserRooms($is_logged_in, $username); ?>
 
     </header>
 
@@ -132,7 +132,7 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form">
+                        <form class="booking-form" action="adminpage.php" method="POST">
                             <div class="input-group">
                                 <label><h3>Full name</h3></label>
                                 <input type="text" placeholder="Enter Your Full name" required>
@@ -156,10 +156,20 @@ require '../../logged_in.php';
                                 </div>
                             </div>
                             <hr>
-                            <div class="input-group">
-                                <label><h3>Payment Option</h3></label>
-                                <input type="text" placeholder="Enter Payment Option" required>
+                        <div class="payment-group">
+                            <div class="input-group1">
+                                <label>
+                                    <h3>Payment Option</h3>
+                                </label>
+                                <select required>
+                                    <option value="" disabled selected>Select Payment Option</option>
+                                    <option value="credit-card">Credit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="bank-transfer">Gcash</option>
+                                    <option value="cash">Cash</option>
+                                </select>
                             </div>
+                        </div>
                             <div class="input-group">
                                 <label><h3>Amount</h3></label>
                                 <input type="number" placeholder="Enter Amount" required>
@@ -248,6 +258,42 @@ require '../../logged_in.php';
 
     
 </body>
+
+<style>
+   
+
+    .input-group1 select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 50px; /* Rounded edges */
+        outline: none;
+        background-color: white;
+        appearance: none; /* Removes default dropdown arrow styling */
+        box-sizing: border-box;
+    }
+
+    .input-group1 select:focus {
+        border-color: #777; /* Border color on focus */
+    }
+
+    .input-group1 {
+        position: relative;
+    }
+
+    .input-group1::after {
+        content: '▼'; /* Custom dropdown arrow */
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #777;
+    }
+
+   
+</style>
 </html>
 
 

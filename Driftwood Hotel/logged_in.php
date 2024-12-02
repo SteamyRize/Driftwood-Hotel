@@ -23,6 +23,22 @@ function SignUser($is_logged_in, $username) {
     <?php endif; 
 }
 
+function SignUserRooms($is_logged_in, $username) {
+    if ($is_logged_in): ?>
+        <div class="auth-btn">
+            <a href="../../profile/profile.php">
+                <p> Welcome, <strong> <?= $username ?> </p> 
+            </a>
+        </div>
+    <?php else: ?>
+        <div class="auth-btn">
+            <a href="../../login/login.php">
+                <button class="sign-in-btn">Sign In / Register</button>
+            </a>
+        </div>
+    <?php endif; 
+}
+
 function LoginBookBanner($is_logged_in){
     if ($is_logged_in): ?>
             <a href="rooms.php">

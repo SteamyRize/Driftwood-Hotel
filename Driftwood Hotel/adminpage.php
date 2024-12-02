@@ -1,3 +1,8 @@
+<?php
+require 'adminpages/db_admin.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,17 +64,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>First Name Last Name</td>
-                            <td>randomemail@gmail.com</td>
-                            <td>Quezon City</td>
-                            <td>Good Room</td>
-                            <td>20XX-Mn-Dy</td>
-                            <td>20XX-Mn-Dy</td>
-                            <td>Not Confirm</td>
-                            <td><button class="action-btn">Action</button></td>
-                        </tr>
+                            <?php if (!empty($bookings)): ?>
+                                <?php foreach ($bookings as $row): ?>
+                                    <tr>
+                                        <td><?php echo $row['id']; ?></td>
+                                        <td><?php echo $row['full_name']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
+                                        <td><?php echo $row['contact_number']; ?></td>
+                                        <td><?php echo $row['check_in']; ?></td>
+                                        <td><?php echo $row['check_out']; ?></td>
+                                        <td><?php echo $row['payment_option']; ?></td>
+                                        <td><?php echo $row['amount']; ?></td>
+                                        <td><?php echo $row['created_at']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="9">No bookings available.</td>
+                                </tr>
+                            <?php endif; ?>
                     </tbody>
                 </table>
             </div>

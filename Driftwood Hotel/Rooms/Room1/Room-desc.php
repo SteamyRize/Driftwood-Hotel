@@ -29,7 +29,7 @@ require '../../logged_in.php';
 
         </nav>
         
-        <?php SignUser($is_logged_in, $username); ?>
+        <?php SignUserRooms($is_logged_in, $username); ?>
 
     </header>
 
@@ -135,37 +135,47 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
                             <div class="input-group">
                                 <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
+                                <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                             </div>
                             <div class="input-group">
                                 <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
+                                <input type="email" name="email" placeholder="Enter your Email" required>
                             </div>
                             <div class="input-group">
                                 <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
+                                <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
                             </div>
                             <div class="date-group">
                                 <div class="input-group">
                                     <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
                                 </div>
                                 <div class="input-group">
                                     <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
                                 </div>
                             </div>
                             <hr>
-                            <div class="input-group">
-                                <label><h3>Payment Option</h3></label>
-                                <input type="text" placeholder="Enter Payment Option" required>
+                        <div class="payment-group">
+                            <div class="input-group1">
+                                <label>
+                                    <h3>Payment Option</h3>
+                                </label>
+                                <select name="payment_option" required>
+                                    <option value="" disabled selected>Select Payment Option</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="Gcash">Gcash</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
                             </div>
+                        </div>
                             <div class="input-group">
                                 <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
+                                <input type="number" name="amount" placeholder="Enter Amount" required>
                             </div>
                             <button type="submit" class="confirm-btn">Confirm</button>
                         </form>
@@ -251,6 +261,43 @@ require '../../logged_in.php';
 
     
 </body>
+
+
+<style>
+   
+
+    .input-group1 select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 50px; /* Rounded edges */
+        outline: none;
+        background-color: white;
+        appearance: none; /* Removes default dropdown arrow styling */
+        box-sizing: border-box;
+    }
+
+    .input-group1 select:focus {
+        border-color: #777; /* Border color on focus */
+    }
+
+    .input-group1 {
+        position: relative;
+    }
+
+    .input-group1::after {
+        content: '▼'; /* Custom dropdown arrow */
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #777;
+    }
+
+   
+</style>
 </html>
 
 
