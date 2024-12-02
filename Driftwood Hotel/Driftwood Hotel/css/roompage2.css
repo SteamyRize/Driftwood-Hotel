@@ -1,0 +1,80 @@
+
+
+
+
+/* Room Section */
+.room-section {
+    width: 100%;
+    height: 563px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding: 30px;
+    flex-grow: 1;
+    /* Allows room-section to take up remaining space */
+    overflow-y: auto;
+    /* Allows scrolling within this section if content is large */
+    max-width: 100%;
+}
+
+.room-heading {
+    font-weight: 800;
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.rooms-container {
+    display: flex;
+   flex-wrap: wrap;
+   gap: 20px; /* Adjust spacing between items */
+   justify-content: center;
+}
+
+.room-card {
+    position: relative;
+    width: 261px;
+    height: 300px;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin-bottom:5em;
+   
+}
+
+.room-image {
+    width: 265px;
+    height: 203px;
+    background-color: #E0E2E6;
+    border-radius: 12px;
+}
+
+.room-image img{
+    width: 265px;
+    height: 203px;
+    background-color: #E0E2E6;
+    border-radius: 12px;
+}
+
+.room-card .room-name {
+    margin-top: 15px;
+    font-size: 1.5em;
+    color: #484848;
+}
+
+.room-description {
+    font-family: 'Abel', sans-serif;
+    font-size: 11px;
+    color: #484848;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.book-btn {
+    background-color: #FFFFFF;
+    border: 1px solid #484848;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
