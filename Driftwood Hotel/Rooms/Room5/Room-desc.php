@@ -132,50 +132,53 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form" action="adminpage.php" method="POST">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
+                            
+                            <input type="hidden" name="room" value="The Coastal Breeze Suite">
+                            
                             <div class="input-group">
-                                <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
-                            </div>
-                            <div class="date-group">
-                                <div class="input-group">
-                                    <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Full name</h3></label>
+                                    <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                                 </div>
                                 <div class="input-group">
-                                    <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Email</h3></label>
+                                    <input type="email" name="email" placeholder="Enter your Email" required>
+                                </div>
+                                <div class="input-group">
+                                    <label><h3>Contact Number</h3></label>
+                                    <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
+                                </div>
+                                <div class="date-group">
+                                    <div class="input-group">
+                                        <label><h3>Check-In Time</h3></label>
+                                        <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label><h3>Check-Out Time</h3></label>
+                                        <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                </div>
+                                <hr>
+                            <div class="payment-group">
+                                <div class="input-group1">
+                                    <label>
+                                        <h3>Payment Option</h3>
+                                    </label>
+                                    <select name="payment_option" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Paypal">PayPal</option>
+                                        <option value="Gcash">Gcash</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                        <div class="payment-group">
-                            <div class="input-group1">
-                                <label>
-                                    <h3>Payment Option</h3>
-                                </label>
-                                <select required>
-                                    <option value="" disabled selected>Select Payment Option</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank-transfer">Gcash</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                            <div class="input-group">
-                                <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
-                            </div>
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </form>
+                                <div class="input-group">
+                                    <label><h3>Amount</h3></label>
+                                    <input type="number" name="amount" placeholder="Enter Amount" required>
+                                </div>
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -209,25 +212,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Megan T.</p>
+                    <p class="review-date">September 28, 2024</p>
+                    <p class="review-content">"The Coastal Breeze Suite exceeded all my expectations. The view of the shoreline from the balcony was absolutely stunning, and the calming décor made it easy to unwind. The suite had everything I needed, from a well-equipped kitchen to strong Wi-Fi for catching up on work. It was the perfect mix of comfort and style, and I can’t wait to come back!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Jonathan L.</p>
+                    <p class="review-date">October 10, 2024</p>
+                    <p class="review-content">"My stay at The Coastal Breeze Suite was nothing short of fantastic. The peaceful atmosphere and soothing tones of the design really helped me relax after a hectic month. The Netflix-equipped television was great for cozy evenings in, and the air conditioning kept the suite perfectly comfortable. The attention to detail in this space made my stay truly memorable!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Sophia R.</p>
+                    <p class="review-date">November 15, 2024</p>
+                    <p class="review-content">"The Coastal Breeze Suite was exactly what I needed for a tranquil getaway. Waking up to the sight of the ocean each morning was an experience I’ll never forget. The suite was clean, modern, and well-maintained, with thoughtful amenities like a washer and reliable internet. Even though it’s not pet-friendly, it’s ideal for a solo retreat or couples. Highly recommended!"</p>
                 </div>
             </div>
         </div>

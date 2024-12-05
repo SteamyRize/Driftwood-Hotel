@@ -245,6 +245,19 @@ img {
     object-fit: cover;
 }
 
+.aboutUsTextContainer {
+    background-color: var(--bg-sub-, #f0f0f0); /* Background color */
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    color: #333;
+    border-radius: 0.5em;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow effect */
+}
+
+
 .container .sectionTitle {
     font-size: 48px;
     font-family: var(--font-fam-montserrat-);
@@ -395,16 +408,24 @@ img {
 }
 
 .container .aboutWrapper .aboutusImageContainer {
-   width:40%;
-    
-}
-
-.container .aboutWrapper .aboutusImageContainer img{
-    width: 40em;
-    height: 20em;
-    
-    
-}
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;  /* Add space around the image */
+    background-color: white; /* White background for the polaroid look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Shadow effect for polaroid feel */
+    border-radius: 10px;  /* Slightly rounded corners for the border */
+ }
+ 
+ .container .aboutWrapper .aboutusImageContainer img {
+     width: 100%;
+     height: auto;  /* Maintain aspect ratio */
+     display: block;  /* Remove any unwanted space under the image */
+     border: 10px solid white; /* Add white border around the image */
+ }
+ 
 
 
 

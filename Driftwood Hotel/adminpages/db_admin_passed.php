@@ -14,9 +14,9 @@ if ($conn->connect_error) {
 }
 
 // Retrieve bookings
-$sql = "SELECT * FROM bookings";
+$sql = "SELECT * FROM pass_books";
 $result = $conn->query($sql);
-$bookings = $result->fetch_all(MYSQLI_ASSOC);
+$pass_books = $result->fetch_all(MYSQLI_ASSOC);
 
 
 

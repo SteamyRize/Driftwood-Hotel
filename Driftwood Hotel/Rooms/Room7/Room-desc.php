@@ -131,50 +131,53 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form" action="adminpage.php" method="POST">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
+                            
+                            <input type="hidden" name="room" value="The Pearl Suite">
+                            
                             <div class="input-group">
-                                <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
-                            </div>
-                            <div class="date-group">
-                                <div class="input-group">
-                                    <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Full name</h3></label>
+                                    <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                                 </div>
                                 <div class="input-group">
-                                    <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Email</h3></label>
+                                    <input type="email" name="email" placeholder="Enter your Email" required>
+                                </div>
+                                <div class="input-group">
+                                    <label><h3>Contact Number</h3></label>
+                                    <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
+                                </div>
+                                <div class="date-group">
+                                    <div class="input-group">
+                                        <label><h3>Check-In Time</h3></label>
+                                        <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label><h3>Check-Out Time</h3></label>
+                                        <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                </div>
+                                <hr>
+                            <div class="payment-group">
+                                <div class="input-group1">
+                                    <label>
+                                        <h3>Payment Option</h3>
+                                    </label>
+                                    <select name="payment_option" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Paypal">PayPal</option>
+                                        <option value="Gcash">Gcash</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                        <div class="payment-group">
-                            <div class="input-group1">
-                                <label>
-                                    <h3>Payment Option</h3>
-                                </label>
-                                <select required>
-                                    <option value="" disabled selected>Select Payment Option</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank-transfer">Gcash</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                            <div class="input-group">
-                                <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
-                            </div>
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </form>
+                                <div class="input-group">
+                                    <label><h3>Amount</h3></label>
+                                    <input type="number" name="amount" placeholder="Enter Amount" required>
+                                </div>
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -208,25 +211,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Grace W.</p>
+                    <p class="review-date">July 18, 2024</p>
+                    <p class="review-content">"The Pearl Suite truly lives up to its name! The calming tones and elegant décor made it feel like a luxurious retreat. I especially loved having my two pets with me—they enjoyed lounging on the balcony while I soaked in the ocean breeze. Highly recommend this suite for anyone seeking both comfort and style."</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Michael T.</p>
+                    <p class="review-date">September 5, 2024</p>
+                    <p class="review-content">"I stayed in the Pearl Suite for a week, and it was the best vacation experience I’ve had. The kitchen was fully equipped, making it easy to prepare meals, and the Netflix access was a great touch for unwinding at night. The pet-friendly policy was a huge plus, as my dogs felt right at home. Perfect for a peaceful getaway."</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Sophia L.</p>
+                    <p class="review-date">October 15, 2024</p>
+                    <p class="review-content">"The Pearl Suite provided everything I needed for a relaxing coastal escape. From the comfortable bedroom to the spacious patio, every detail was thoughtfully designed. The serene color palette and proximity to the beach made this a memorable stay. I’ll definitely be returning soon—highly recommend for couples or small families!"</p>
                 </div>
             </div>
         </div>

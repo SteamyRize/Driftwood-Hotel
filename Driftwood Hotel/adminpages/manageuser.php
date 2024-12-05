@@ -42,19 +42,22 @@ $conn->close();
             <div class="admin-title">ADMIN</div>
             <nav class="menu">
                 <hr>
-                <a href="../adminpage.php" class="menu-item">Status</a>
+                <a href="../adminpage.php" class="menu-item">Pending Books</a>
                 <hr>
-                <a href="roombooking.php" class="menu-item">Room Booking</a>
+                <a href="roombooking.php" class="menu-item">Booked Rooms</a>
+                <hr>
+                <a href="pass_books.php" class="menu-item">Passed Books</a>
                 <hr>
                 <a href="manageuser.php" class="menu-item active">Manage user account</a>
                 <hr>
+                
             </nav>
         </aside>
 
         <!-- Main Content -->
         <div class="content">
             <div class="content-header">
-                <h2>Manage User Account</h2><span class="inactive">Room Booking</span>
+                <h2>Manage User Account</h2>
             </div>
 
             <!-- Table Container -->

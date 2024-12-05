@@ -132,50 +132,53 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form" action="adminpage.php" method="POST">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
+                            
+                            <input type="hidden" name="room" value="The Oceanview Retreat">
+                            
                             <div class="input-group">
-                                <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
-                            </div>
-                            <div class="date-group">
-                                <div class="input-group">
-                                    <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Full name</h3></label>
+                                    <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                                 </div>
                                 <div class="input-group">
-                                    <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Email</h3></label>
+                                    <input type="email" name="email" placeholder="Enter your Email" required>
+                                </div>
+                                <div class="input-group">
+                                    <label><h3>Contact Number</h3></label>
+                                    <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
+                                </div>
+                                <div class="date-group">
+                                    <div class="input-group">
+                                        <label><h3>Check-In Time</h3></label>
+                                        <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label><h3>Check-Out Time</h3></label>
+                                        <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                </div>
+                                <hr>
+                            <div class="payment-group">
+                                <div class="input-group1">
+                                    <label>
+                                        <h3>Payment Option</h3>
+                                    </label>
+                                    <select name="payment_option" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Paypal">PayPal</option>
+                                        <option value="Gcash">Gcash</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                        <div class="payment-group">
-                            <div class="input-group1">
-                                <label>
-                                    <h3>Payment Option</h3>
-                                </label>
-                                <select required>
-                                    <option value="" disabled selected>Select Payment Option</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank-transfer">Gcash</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                            <div class="input-group">
-                                <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
-                            </div>
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </form>
+                                <div class="input-group">
+                                    <label><h3>Amount</h3></label>
+                                    <input type="number" name="amount" placeholder="Enter Amount" required>
+                                </div>
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -209,25 +212,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Emily H.</p>
+                    <p class="review-date">November 12, 2024</p>
+                    <p class="review-content">"The Oceanview Retreat was everything we hoped for and more. The breathtaking views from the balcony instantly took my stress away, and the serene décor perfectly complemented the natural beauty outside. The two bathrooms were a huge plus for our group, and the pet-friendly policy meant our Labrador could join the fun! From the fully-equipped kitchen to the cozy Netflix evenings, every detail was perfection. Truly an unforgettable stay!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Daniel K.</p>
+                    <p class="review-date">November 18, 2024</p>
+                    <p class="review-content">"I couldn’t get enough of the Oceanview Retreat. The panoramic sea view was mesmerizing and made every moment magical, especially during sunrise. The space was spotless and well-designed, and the modern amenities like air conditioning and wireless internet worked flawlessly. The pet-friendly atmosphere was wonderful; our cat loved lounging on the balcony! This suite felt like a dream come true—can’t recommend it enough."</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Laura P.</p>
+                    <p class="review-date">November 22, 2024</p>
+                    <p class="review-content">"Our stay at the Oceanview Retreat was beyond perfect. From the moment we walked in, we felt the calming energy of the ocean with its soothing views. The two-bedroom, two-bathroom setup was ideal for our family, and having Netflix and reliable Wi-Fi made downtime fun and relaxing. The balcony quickly became our favorite spot to unwind with a cup of coffee. It was a treat to bring our dog along and feel so welcomed. This place truly blends luxury with nature!"</p>
                 </div>
             </div>
         </div>

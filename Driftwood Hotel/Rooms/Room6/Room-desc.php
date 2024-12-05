@@ -132,50 +132,53 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form" action="adminpage.php" method="POST">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
+                            
+                            <input type="hidden" name="room" value="The Shoreline Luxe Suite">
+                            
                             <div class="input-group">
-                                <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
-                            </div>
-                            <div class="date-group">
-                                <div class="input-group">
-                                    <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Full name</h3></label>
+                                    <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                                 </div>
                                 <div class="input-group">
-                                    <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Email</h3></label>
+                                    <input type="email" name="email" placeholder="Enter your Email" required>
+                                </div>
+                                <div class="input-group">
+                                    <label><h3>Contact Number</h3></label>
+                                    <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
+                                </div>
+                                <div class="date-group">
+                                    <div class="input-group">
+                                        <label><h3>Check-In Time</h3></label>
+                                        <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label><h3>Check-Out Time</h3></label>
+                                        <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                </div>
+                                <hr>
+                            <div class="payment-group">
+                                <div class="input-group1">
+                                    <label>
+                                        <h3>Payment Option</h3>
+                                    </label>
+                                    <select name="payment_option" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Paypal">PayPal</option>
+                                        <option value="Gcash">Gcash</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                        <div class="payment-group">
-                            <div class="input-group1">
-                                <label>
-                                    <h3>Payment Option</h3>
-                                </label>
-                                <select required>
-                                    <option value="" disabled selected>Select Payment Option</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank-transfer">Gcash</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                            <div class="input-group">
-                                <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
-                            </div>
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </form>
+                                <div class="input-group">
+                                    <label><h3>Amount</h3></label>
+                                    <input type="number" name="amount" placeholder="Enter Amount" required>
+                                </div>
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -209,25 +212,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Amelia R.</p>
+                    <p class="review-date">August 12, 2024</p>
+                    <p class="review-content">"The Shoreline Luxe Suite redefines relaxation. The king-size bed was incredibly comfortable, and waking up to the breathtaking ocean view was priceless. The suite’s stylish design and modern amenities, like the Netflix-ready TV and fast Wi-Fi, made the stay both luxurious and convenient. It’s the perfect spot for anyone looking to recharge in elegance!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Daniel M.</p>
+                    <p class="review-date">September 30, 2024</p>
+                    <p class="review-content">"I was amazed by how The Shoreline Luxe Suite combined contemporary style with the natural beauty of the ocean. The balcony became my favorite spot to enjoy coffee each morning while soaking in the view. The space was immaculate, and the air conditioning was a blessing on hot afternoons. Highly recommend for anyone seeking a peaceful retreat!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Olivia P.</p>
+                    <p class="review-date">October 20, 2024</p>
+                    <p class="review-content">"This suite is pure perfection. The king-size bedroom felt luxurious, and the décor was chic yet welcoming. I especially loved the spacious kitchen and the well-maintained patio where I could relax in the evenings. The proximity to the beach made every moment feel like a dream. I’ll definitely be booking again!"</p>
                 </div>
             </div>
         </div>

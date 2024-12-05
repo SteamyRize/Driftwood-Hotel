@@ -1,12 +1,16 @@
 <?php
+include "db.php";
 session_start();
 
 $is_logged_in = isset($_SESSION['user_id']);
 $username = $is_logged_in ? htmlspecialchars($_SESSION['username']) : null;
 $email = $is_logged_in ? htmlspecialchars($_SESSION['email']) : null;
+
 ?>
 
 <?php
+
+
 function SignUser($is_logged_in, $username) {
     if ($is_logged_in): ?>
         <div class="auth-btn">

@@ -1,5 +1,6 @@
 <?php
 require '../logged_in.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,9 @@ require '../logged_in.php';
             <div class="admin-title">PROFILE</div>
             <nav class="menu">
                 <hr>
-                <a href="adminpage.php" class="menu-item active">Profile</a>
+                <a href="profile.php" class="menu-item active">Profile</a>
+                <hr>
+                <a href="pending_books.php" class="menu-item">Pending Books</a>
                 <hr>
             </nav>
         </aside>

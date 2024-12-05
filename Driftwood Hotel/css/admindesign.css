@@ -18,25 +18,23 @@
     --font-fam-montserrat-: "Montserrat", sans-serif;
 }
 
-
-
 .font-poppins {
-  font-family: var(--font-fam-poppins-);
+    font-family: var(--font-fam-poppins-);
 }
 
 .font-montserrat {
-  font-family: var(--font-fam-montserrat-);
+    font-family: var(--font-fam-montserrat-);
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
-
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #e6f3e6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .main-header {
@@ -53,11 +51,13 @@ body {
 /* Dashboard layout */
 .dashboard {
     display: flex;
+    height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.admin-title{
+.admin-title {
     text-align: center;
-     font-family: 'Montserrat';
+    font-family: 'Montserrat';
 }
 
 .sidebar {
@@ -96,6 +96,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     background-color: #C9E6CF;
+    overflow-x: auto; /* Allow scrolling within the content area */
 }
 
 .content-header {
@@ -147,11 +148,13 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Allow horizontal scrolling for the table */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: auto; /* Dynamically adjust column widths */
 }
 
 thead th {
@@ -164,6 +167,7 @@ thead th {
 tbody td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Break long text into multiple lines */
 }
 
 tbody tr:last-child td {
@@ -181,4 +185,26 @@ tbody tr:last-child td {
 
 .action-btn:hover {
     background-color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px; /* Adjust sidebar width */
+    }
+
+    .content {
+        margin-left: 150px; /* Adjust content margin */
+    }
+
+    table th,
+    table td {
+        font-size: 12px; /* Smaller font size for mobile screens */
+        padding: 8px;
+    }
+
+    .new-room-booking-btn {
+        font-size: 12px; /* Adjust button size for mobile */
+        padding: 8px 16px;
+    }
 }

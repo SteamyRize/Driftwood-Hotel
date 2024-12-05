@@ -14,10 +14,145 @@ require 'logged_in.php';
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/d1cc49e838.js" crossorigin="anonymous"></script>
+
+    
+    <style>
+        /* bago yata na css*/
+        .bannerer {
+            width: 100%;
+            margin-top: 10px;
+            background-image: url('banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .bannerer h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .slideshow-container img {
+        transition: transform 0.3s ease-in-out;
+        }
+        .slideshow-container img:hover {
+        transform: scale(1.05);
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            position: relative;
+        }
+
+
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides img {
+        width: 30%;
+        height: 350px;
+        margin: 2%;
+        transition: transform 0.3s ease-in-out;
+        }
+
+        .mySlides img:hover {
+        transform: scale(1.05);
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        /* not responsice part
+        margin-left: -920px;
+        margin-right: 320px;
+        */
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 2 3px 3px 0;
+        user-select: none;
+        z-index: 10;
+        background-color: #2C2C2C;
+        border-radius: 70%;
+        
+        }
+
+        /*responsivility*/
+        .prev{
+            left: 16.2%;
+        }
+        .next {
+        right: 16.2%;
+        }
+
+        .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,2);
+        }
+    </style>
+
+    <script>
+        // Bago rin na javascriptings
+        let slideIndex= 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+
+
 </head>
 
 <body>
-<header class="main-header">
+    <header class="main-header">
         <div class="logo"><img src="Drifcombieng.png" id="logopic"></div>
         <nav class="header-nav">
             <a href="index.php">Home</a>
@@ -46,21 +181,89 @@ require 'logged_in.php';
          
         </section>
 
+        <!-- lahat na section na to bago -->
         <section id="Rooms">
-            <div class="container">
+            <div class="container" style="padding: 0; padding-top: 1%;">
                 <p class="sectionTitle">
-                    <a href="roompage2.html"><u>Rooms</u></a>
+                    <a href="roompage2.html"><u style="color: white;">Rooms</u></a>
                 </p>
-                <div class="imgContainer">
-                    <div class="imgWrapper">
-                        <a href="Rooms/Room1/Room-desc.php"><img src="Rooms/Room1/bed1.jpg" alt="Sample Room 1"></a>
-                    </div>
-                    <div class="imgWrapper">
-                        <a href="Rooms/Room2/Room-desc.php"><img src="Rooms/Room2/room2.jpg" alt="Sample Room 2"></a>
-                    </div>
-                </div>
             </div>
+            <section class="bannerer" style="background-color: #ACB9B6;">
+                
+                <div class="mySlides fade" style ="display: block;">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room1/Room-desc.php">
+                        <img src="Rooms/Room1/bed1.jpg" loading="lazy">
+                    </a>
+                    <a href="Rooms/Room2/Room-desc.php">
+                        <img src="Rooms/Room2/room2.jpg" loading="lazy">
+                    </a>
+                    <div class="text"></div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room3/Room-desc.php">
+                        <img src="Rooms/Room3/room3.jpg" loading="lazy">
+                    </a>
+                    <a href="Rooms/Room4/Room-desc.php">
+                        <img src="Rooms/Room4/room4.jpg" loading="lazy">
+                    </a>
+                    <div class="text"></div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room5/Room-desc.php">
+                        <img src="Rooms/Room5/room5.jpg" >
+                    </a>
+                    <a href="Rooms/Room6/Room-desc.php">
+                        <img src="Rooms/Room6/room6.jpg" loading="lazy">
+                    </a>
+                    <div class="text"></div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room7/Room-desc.php">
+                        <img src="Rooms/Room7/room7.jpg" >
+                    </a>
+                    <a href="Rooms/Room8/Room-desc.php">
+                        <img src="Rooms/Room8/room8.jpg" loading="lazy" >
+                    </a>
+                    <div class="text"></div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room9/Room-desc.php">
+                        <img src="Rooms/Room9/room9.jpg">
+                    </a>
+                    <a href="Rooms/Room1/Room-desc.php">
+                        <img src="Rooms/Room1/bed1.jpg" loading="lazy" >
+                    </a>
+                    <div class="text"></div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <a href="Rooms/Room3/Room-desc.php">
+                        <img src="Rooms/Room3/room3.jpg">
+                    </a>
+                    <a href="Rooms/Room4/Room-desc.php">
+                        <img src="Rooms/Room4/room4.jpg" loading="lazy">
+                    </a>
+                    <div class="text"></div>
+                </div>
+            
+                <!-- buttonessss -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+            </section>
         </section>
+
 
         <section id="Gallery">
             <div class="container">

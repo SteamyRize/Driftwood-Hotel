@@ -133,50 +133,53 @@ require '../../logged_in.php';
                     <!-- Book Now Section -->
                     <div class="booking-section">
                         <!-- Form Section -->
-                        <form class="booking-form" action="adminpage.php" method="POST">
+                        <form class="booking-form" action="../../submit_booking.php" method="POST">
+                            
+                            <input type="hidden" name="room" value="The Driftwood Villa">
+                            
                             <div class="input-group">
-                                <label><h3>Full name</h3></label>
-                                <input type="text" placeholder="Enter Your Full name" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Email</h3></label>
-                                <input type="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="input-group">
-                                <label><h3>Contact Number</h3></label>
-                                <input type="tel" placeholder="Enter your Contact Number" required>
-                            </div>
-                            <div class="date-group">
-                                <div class="input-group">
-                                    <label><h3>Check-In Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Full name</h3></label>
+                                    <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                                 </div>
                                 <div class="input-group">
-                                    <label><h3>Check-Out Time</h3></label>
-                                    <input type="date" placeholder="DD/MM/YYYY" required>
+                                    <label><h3>Email</h3></label>
+                                    <input type="email" name="email" placeholder="Enter your Email" required>
+                                </div>
+                                <div class="input-group">
+                                    <label><h3>Contact Number</h3></label>
+                                    <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
+                                </div>
+                                <div class="date-group">
+                                    <div class="input-group">
+                                        <label><h3>Check-In Time</h3></label>
+                                        <input type="date" name="check_in"placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label><h3>Check-Out Time</h3></label>
+                                        <input type="date" name="check_out" placeholder="DD/MM/YYYY" required>
+                                    </div>
+                                </div>
+                                <hr>
+                            <div class="payment-group">
+                                <div class="input-group1">
+                                    <label>
+                                        <h3>Payment Option</h3>
+                                    </label>
+                                    <select name="payment_option" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Paypal">PayPal</option>
+                                        <option value="Gcash">Gcash</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                        <div class="payment-group">
-                            <div class="input-group1">
-                                <label>
-                                    <h3>Payment Option</h3>
-                                </label>
-                                <select required>
-                                    <option value="" disabled selected>Select Payment Option</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank-transfer">Gcash</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                            <div class="input-group">
-                                <label><h3>Amount</h3></label>
-                                <input type="number" placeholder="Enter Amount" required>
-                            </div>
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </form>
+                                <div class="input-group">
+                                    <label><h3>Amount</h3></label>
+                                    <input type="number" name="amount" placeholder="Enter Amount" required>
+                                </div>
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -210,25 +213,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Sarah L.</p>
+                    <p class="review-date">November 15, 2024</p>
+                    <p class="review-content">"Our stay at The Driftwood Villa was nothing short of spectacular! The two-bedroom villa offered plenty of space for our family of four and our two dogs. The rustic, coastal-inspired décor immediately set a relaxing tone, and the modern amenities—like Netflix, a fully-equipped kitchen, and reliable Wi-Fi—made us feel right at home. The balcony was our favorite spot, where we enjoyed morning coffees with stunning views. Having our pets along made it even more special, as they loved the outdoor spaces. Highly recommend this villa for families or couples seeking a peaceful retreat by the beach!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Alex G.</p>
+                    <p class="review-date">November 20, 2024</p>
+                    <p class="review-content">"We couldn’t have picked a better place than The Driftwood Villa for our weekend escape. The natural wood accents and earthy tones of the apartment gave it such a relaxing vibe, and the combination of rustic charm and luxury was spot on. The air conditioning kept us cool during the afternoons, and the Netflix-equipped TV ensured cozy movie nights. The pet-friendly policy was a lifesaver, and our golden retriever felt as welcome as we did. Whether it’s the peaceful balcony or the fully functional kitchen, every detail seemed thoughtfully designed. Can’t wait to return!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Ryan T.</p>
+                    <p class="review-date">November 25, 2024</p>
+                    <p class="review-content">The Driftwood Villa exceeded all our expectations! The two-bedroom layout was spacious, the kitchen had everything we needed, and the patio offered a calming retreat with its serene vibes. The highlight for us was how pet-friendly it was—we brought our three cats, and they absolutely adored the space! The villa had just the right mix of comfort and luxury, from the air conditioner to the washer, which was super convenient for longer stays. If you’re looking for a peaceful, beach-inspired getaway with all the comforts of home, this is the place!</p>
                 </div>
             </div>
         </div>

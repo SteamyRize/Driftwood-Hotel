@@ -14,9 +14,9 @@ if ($conn->connect_error) {
 }
 
 // Retrieve bookings
-$sql = "SELECT * FROM bookings";
+$sql = "SELECT * FROM approved_bookings";
 $result = $conn->query($sql);
-$bookings = $result->fetch_all(MYSQLI_ASSOC);
+$approved_bookings = $result->fetch_all(MYSQLI_ASSOC);
 
 
 

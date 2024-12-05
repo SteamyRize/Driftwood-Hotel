@@ -136,7 +136,10 @@ require '../../logged_in.php';
                     <div class="booking-section">
                         <!-- Form Section -->
                         <form class="booking-form" action="../../submit_booking.php" method="POST">
-                            <div class="input-group">
+                            
+                        <input type="hidden" name="room" value="The Oceanfront Haven">
+                        
+                        <div class="input-group">
                                 <label><h3>Full name</h3></label>
                                 <input type="text" name="full_name" placeholder="Enter Your Full name" required>
                             </div>
@@ -167,7 +170,7 @@ require '../../logged_in.php';
                                 <select name="payment_option" required>
                                     <option value="" disabled selected>Select Payment Option</option>
                                     <option value="Credit Card">Credit Card</option>
-                                    <option value="paypal">PayPal</option>
+                                    <option value="Paypal">PayPal</option>
                                     <option value="Gcash">Gcash</option>
                                     <option value="Cash">Cash</option>
                                 </select>
@@ -212,25 +215,25 @@ require '../../logged_in.php';
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Sophia M.</p>
+                    <p class="review-date">April 21, 2023</p>
+                    <p class="review-content">"The Oceanview Suite was absolutely stunning. The moment we walked in, we were greeted by panoramic views of the turquoise waters – it was like stepping into paradise! The room itself was spacious, modern, and tastefully decorated with a calming coastal theme. The floor-to-ceiling windows made us feel like we were right on the beach, and we spent hours just soaking in the beauty. Every morning, I woke up to the sound of waves crashing and had coffee on the balcony, watching the sun rise over the ocean. The attention to detail in this suite really made it a luxurious retreat. Highly recommend for anyone looking for a peaceful and unforgettable beach escape!"</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">David R.</p>
+                    <p class="review-date">July 12, 2023</p>
+                    <p class="review-content">"I can't say enough good things about the Oceanview Suite. From the moment we arrived, it felt like a true retreat. The design of the room is impeccable – sleek, modern, and perfectly suited to the beachside location. The highlight, of course, was the view. The ocean stretched out before us, and we felt completely immersed in nature. We enjoyed spending time on the balcony, sipping drinks and watching the waves roll in. The room had every amenity you could think of, making our stay extra comfortable. Whether you're coming for a romantic getaway or a relaxing solo trip, this suite has everything you need to unwind in luxury."</p>
                 </div>
             </div>
             <div class="review">
                 <div class="review-avatar"></div>
                 <div class="review-text">
-                    <p class="review-author">John Doberman</p>
-                    <p class="review-date">Mar 12, 2023</p>
-                    <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="review-author">Emma K.</p>
+                    <p class="review-date">May 2, 2023</p>
+                    <p class="review-content">"If you're looking for a truly magical escape, the Oceanview Suite is the place to be. The combination of modern elegance and the soothing coastal atmosphere is perfection. The views were just breathtaking – every time I looked out the window, I felt like I was in a postcard. The space was incredibly spacious, and the decor was chic and sophisticated, yet cozy. I especially loved the large windows, which made the room feel so open and airy. The whole experience was like living in a dream, with the beach at our doorstep and every detail thoughtfully curated for relaxation. I can't wait to return!"</p>
                 </div>
             </div>
         </div>
