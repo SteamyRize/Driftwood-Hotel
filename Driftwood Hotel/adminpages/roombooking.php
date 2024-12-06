@@ -13,25 +13,19 @@ try {
 
     // SQL query to create the event
     $event_sql = "
-    CREATE EVENT IF NOT EXISTS move_to_pass_books
-    ON SCHEDULE EVERY 1 MINUTE
-    DO
-    BEGIN
-        -- Move approved bookings that have passed their check_out date to pass_books
-        INSERT INTO pass_books (full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at)
-        SELECT full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at
-        FROM approved_bookings
-        WHERE check_out <= CURDATE();
+       CREATE EVENT IF NOT EXISTS move_to_pass_books
+        ON SCHEDULE EVERY 1 MINUTE
+        DO
+        BEGIN
+            -- Move approved bookings that have passed their check_out date to pass_books
+            INSERT INTO pass_books (user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
+            SELECT user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, NOW(), NULL
+            FROM approved_bookings
+            WHERE check_out <= CURDATE();
 
-        -- Update checked_out_at timestamp in approved_bookings
-        UPDATE approved_bookings
-        SET checked_out_at = CURRENT_TIMESTAMP
-        WHERE check_out <= CURDATE();
-
-        -- Delete the records from approved_bookings that were moved
-        DELETE FROM approved_bookings
-        WHERE check_out <= CURDATE();
-    END;
+            -- Delete the records from approved_bookings that were moved
+            DELETE FROM approved_bookings WHERE check_out <= CURDATE();
+        END;
     ";
 
     // Execute the SQL query to create the event
@@ -46,6 +40,39 @@ try {
 } catch (PDOException $e) {
     echo "Error creating event or fetching bookings: " . $e->getMessage();
 }
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $booking_id = $_POST['booking_id'] ?? null;
+
+    if ($booking_id) {
+        try {
+            // Move booking to pass_books and set cancelled_at
+            $moveBookingQuery = "
+                INSERT INTO pass_books (user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
+                SELECT user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, NULL, NOW()
+                FROM approved_bookings
+                WHERE id = :booking_id
+            ";
+            $stmt = $pdo->prepare($moveBookingQuery);
+            $stmt->execute(['booking_id' => $booking_id]);
+
+            // Delete the booking from approved_bookings
+            $deleteBookingQuery = "DELETE FROM approved_bookings WHERE id = :booking_id";
+            $stmt = $pdo->prepare($deleteBookingQuery);
+            $stmt->execute(['booking_id' => $booking_id]);
+
+            echo "<script>alert('Booking Cancelled!'); window.location.href='../adminpage.php';</script>";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } else {
+        echo "Invalid Booking ID.";
+    }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +102,8 @@ try {
             <hr>
             <a href="pass_books.php" class="menu-item">Passed Books</a>
             <hr>
+            <a href="roombooking_denied.php" class="menu-item">Denied Books</a>
+            <hr>
             <a href="manageuser.php" class="menu-item">Manage user account</a>
             <hr>
         </nav>
@@ -102,6 +131,7 @@ try {
                         <th>Amount</th>
                         <th>Booking Date</th>
                         <th>Approved Date</th>
+                        <th>Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,6 +149,13 @@ try {
                                 <td><?php echo $row['amount']; ?></td>
                                 <td><?php echo $row['created_at']; ?></td>
                                 <td><?php echo $row['approved_at']; ?></td>
+                                <td>
+                                       
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="booking_id" value="<?php echo $row['id']; ?>"> 
+                                            <button type="submit" name="cancel" class="neat-button">Cancel</button> 
+                                        </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -132,4 +169,39 @@ try {
     </div>
 </div>
 </body>
+
+<style>
+ 
+.neat-button {
+  background-color: #3498db; 
+  color: white; 
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  margin: 5px;
+}
+
+
+.neat-button:hover {
+  background-color: #2980b9; 
+  transform: translateY(-4px); 
+}
+
+
+.neat-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.6); 
+}
+
+
+.neat-button:active {
+  background-color: #1d6fa5; 
+  transform: translateY(0); 
+}
+</style>
+
 </html>

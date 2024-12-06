@@ -33,6 +33,8 @@ require 'adminpages/db_admin.php';
                 <hr>
                 <a href="adminpages/pass_books.php" class="menu-item">Passed Books</a>
                 <hr>
+                <a href="adminpages/roombooking_denied.php" class="menu-item">Denied Books</a>
+                <hr>
                 <a href="adminpages/manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
                 
@@ -47,7 +49,7 @@ require 'adminpages/db_admin.php';
 
             <!-- Room Booking Section -->
             <div class="room-booking-section">
-                <button class="new-room-booking-btn">New Room Booking <span class="notification">6</span></button>
+                <button class="new-room-booking-btn">New Room Booking </button>
             </div>
 
             <!-- Table Container -->
@@ -116,6 +118,7 @@ require 'adminpages/db_admin.php';
   border-radius: 8px; 
   cursor: pointer;
   transition: all 0.3s ease; 
+  margin: 5px;
 }
 
 

@@ -37,13 +37,13 @@ require 'bookings_query.php';
                 <hr>
                 <a href="profile.php" class="menu-item">Profile</a>
                 <hr>
-                <a href="pending_books.php" class="menu-item active">Pending Books</a>
+                <a href="pending_books.php" class="menu-item ">Pending Books</a>
                 <hr>
                 <a href="approved_books.php" class="menu-item">Approved Books</a>
                 <hr>
                 <a href="passed_books.php" class="menu-item ">Passed Books</a>
                 <hr>
-                <a href="denied_books.php" class="menu-item ">Denied Books</a>
+                <a href="denied_books.php" class="menu-item active">Denied Books</a>
                 <hr>
             </nav>
         </aside>
@@ -54,8 +54,9 @@ require 'bookings_query.php';
             </div>
 
             <!-- Table Container -->
-                <div class="table-container">
-                        <h2>Your Pending Bookings</h2>
+        
+                    <div class="table-container">
+                        <h2>Your Denied Bookings</h2>
                         <table>
                             <thead>
                                 <tr>
@@ -69,12 +70,12 @@ require 'bookings_query.php';
                                     <th>Payment Option</th>
                                     <th>Amount</th>
                                     <th>Booking Date</th>
-                                   
+                                    <th>Denied Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (!empty($pendingBookings)): ?>
-                                    <?php foreach ($pendingBookings as $row): ?>
+                                <?php if (!empty($deniedBookings)): ?>
+                                    <?php foreach ($deniedBookings as $row): ?>
                                         <tr>
                                             <td><?php echo $row['user_id']; ?></td>
                                             <td><?php echo $row['full_name']; ?></td>
@@ -86,21 +87,17 @@ require 'bookings_query.php';
                                             <td><?php echo $row['payment_option']; ?></td>
                                             <td><?php echo $row['amount']; ?></td>
                                             <td><?php echo $row['created_at']; ?></td>
-                                            <td>
-
-                                            </td>
+                                            <td><?php echo $row['denied_at']; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="11">No pending bookings.</td>
+                                        <td colspan="11">No denied bookings.</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
-
-                    
               
             </div>
         </div>

@@ -32,6 +32,8 @@ require 'db_admin_passed.php';
                 <hr>
                 <a href="pass_books.php" class="menu-item active">Passed Books</a>
                 <hr>
+                <a href="roombooking_denied.php" class="menu-item">Denied Books</a>
+                <hr>
                 <a href="manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
                 
@@ -60,6 +62,9 @@ require 'db_admin_passed.php';
                             <th>Amount</th>
                             <th>Booking Date</th>
                             <th>Approved Date</th>
+                            <th>Checked Out</th>
+                            <th>Cancelled</th>
+                            
                     </tr>
                 </thead>
                 <tbody>
@@ -78,6 +83,7 @@ require 'db_admin_passed.php';
                                     <td><?php echo $row['created_at']; ?></td>
                                     <td><?php echo $row['approved_at']; ?></td> 
                                     <td><?php echo $row['checked_out_at']; ?></td>
+                                    <td><?php echo $row['cancelled_at']; ?></td>
                                     <td>
                                     </td>
                                 </tr>

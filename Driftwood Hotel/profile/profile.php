@@ -42,7 +42,13 @@ require '../logged_in.php';
                 <hr>
                 <a href="profile.php" class="menu-item active">Profile</a>
                 <hr>
-                <a href="pending_books.php" class="menu-item">Pending Books</a>
+                <a href="pending_books.php" class="menu-item ">Pending Books</a>
+                <hr>
+                <a href="approved_books.php" class="menu-item">Approved Books</a>
+                <hr>
+                <a href="passed_books.php" class="menu-item ">Passed Books</a>
+                <hr>
+                <a href="denied_books.php" class="menu-item">Denied Books</a>
                 <hr>
             </nav>
         </aside>
