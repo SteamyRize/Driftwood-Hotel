@@ -52,6 +52,8 @@ $conn->close();
                 <hr>
                 <a href="manageuser.php" class="menu-item active">Manage user account</a>
                 <hr>
+                <a href="messages.php" class="menu-item">Messages</a>
+                <hr>
                 
             </nav>
         </aside>

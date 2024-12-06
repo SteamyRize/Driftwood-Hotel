@@ -337,7 +337,7 @@ require 'logged_in.php';
 
                             <a href="#Contact"><u>Ask Questions</u></a>
                         </div>
-                        <button class="customizedBtn">Discover More</button>
+                        
                     </div>
                     <div class="aboutusImageContainer">
                         <img src="homepics/staff.jpg">
@@ -352,15 +352,20 @@ require 'logged_in.php';
                 </div>
                 <div class="formContainer">
                     <div class="card">
-                        <form action="" method="post">
+                        <form action="adminpages/submit_message.php" method="post">
+
                             <label for="firstname">First Name</label>
-                            <input type="text" id="firstname" placeholder="First Name">
+                            <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+
                             <label for="surname">Surname</label>
-                            <input type="text" id="surname" placeholder="Surname">
+                            <input type="text" id="surname" name="surname" placeholder="Surname" required>
+
                             <label for="email">Email</label>
-                            <input type="text" id="firstname" placeholder="Enter your email">
-                            <label for="email">Message</label>
-                            <textarea name="" id="" placeholder="Place your Message"></textarea>
+                            <input type="text" id="firstname" name="email" placeholder="Enter your email" required>
+                            
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Place your Message" required></textarea>
+                            
                             <button type="submit" class="customizedBtnSecondary">Submit Message</button>
                         </form>
                     </div>

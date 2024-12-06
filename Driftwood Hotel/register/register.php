@@ -58,7 +58,8 @@
                         'password' => $hashed_password
                     ]);
                     
-                    header("location: ../login/login.php");
+                    echo "<script>alert('Account Registered!'); window.location.href='../login/login.php';</script>";
+
 
                 } catch (PDOException $e) {
                     if ($e->getCode() == 23000) {

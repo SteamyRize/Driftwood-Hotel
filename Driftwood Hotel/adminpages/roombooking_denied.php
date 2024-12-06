@@ -35,6 +35,8 @@ require 'db_admin_denied.php';
             <hr>
             <a href="manageuser.php" class="menu-item">Manage user account</a>
             <hr>
+            <a href="messages.php" class="menu-item">Messages</a>
+            <hr>
         </nav>
     </aside>
 

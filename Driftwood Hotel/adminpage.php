@@ -37,6 +37,8 @@ require 'adminpages/db_admin.php';
                 <hr>
                 <a href="adminpages/manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
+                <a href="adminpages/messages.php" class="menu-item">Messages</a>
+                <hr>
                 
             </nav>
         </aside>

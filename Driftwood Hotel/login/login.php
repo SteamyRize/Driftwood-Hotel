@@ -55,7 +55,7 @@
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['username'] = $username; 
-                header("location: ../index.php");
+                echo "<script>alert('Login Succesfull!'); window.location.href='../index.php';</script>";
             } else {
                 $errorMessage = "Incorrect username or password!";
             }
