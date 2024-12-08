@@ -33,6 +33,8 @@ require 'db_admin_denied.php';
             <hr>
             <a href="roombooking_denied.php" class="menu-item active">Denied Books</a>
             <hr>
+            <a href="room_availability.php" class="menu-item">Available Rooms</a>
+            <hr>
             <a href="manageuser.php" class="menu-item">Manage user account</a>
             <hr>
             <a href="messages.php" class="menu-item">Messages</a>
@@ -48,13 +50,14 @@ require 'db_admin_denied.php';
 
         <!-- Table Container -->
         <div class="table-container">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>User ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact Number</th>
+                        <th>Room ID</th>
                         <th>Room</th>
                         <th>Check-In</th>
                         <th>Check-Out</th>
@@ -72,6 +75,7 @@ require 'db_admin_denied.php';
                                 <td><?php echo $row['full_name']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td><?php echo $row['contact_number']; ?></td>
+                                <td><?php echo $row['room_id']; ?></td>
                                 <td><?php echo $row['room']; ?></td>
                                 <td><?php echo $row['check_in']; ?></td>
                                 <td><?php echo $row['check_out']; ?></td>

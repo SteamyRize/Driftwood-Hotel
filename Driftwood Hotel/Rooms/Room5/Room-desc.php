@@ -135,6 +135,7 @@ require '../../logged_in.php';
                         <form class="booking-form" action="../../submit_booking.php" method="POST">
                             
                             <input type="hidden" name="room" value="The Coastal Breeze Suite">
+                            <input type="hidden" name="room_id" value="5">
                             
                             <div class="input-group">
                                     <label><h3>Full name</h3></label>

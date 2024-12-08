@@ -1,6 +1,30 @@
 <?php
 require 'db_admin_passed.php';
 
+$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $booking_id = $_POST['booking_id'] ?? null;
+
+    if ($booking_id) {
+        try {
+
+            // Delete the booking from approved_bookings
+            $deleteBookingQuery = "DELETE FROM pass_books WHERE id = :booking_id";
+            $stmt = $pdo->prepare($deleteBookingQuery);
+            $stmt->execute(['booking_id' => $booking_id]);
+
+            echo "<script>alert('Record Deleted!'); window.location.href='pass_books.php';</script>";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } else {
+        echo "Invalid Booking ID.";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +58,8 @@ require 'db_admin_passed.php';
                 <hr>
                 <a href="roombooking_denied.php" class="menu-item">Denied Books</a>
                 <hr>
+                <a href="room_availability.php" class="menu-item">Available Rooms</a>
+                <hr>
                 <a href="manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
                 <a href="messages.php" class="menu-item">Messages</a>
@@ -50,13 +76,14 @@ require 'db_admin_passed.php';
 
         <!-- Table Container -->
         <div class="table-container">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                             <th>User ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact Number</th>
+                            <th>Room ID</th>
                             <th>Room</th>
                             <th>Check-In</th>
                             <th>Check-Out</th>
@@ -66,7 +93,7 @@ require 'db_admin_passed.php';
                             <th>Approved Date</th>
                             <th>Checked Out</th>
                             <th>Cancelled</th>
-                            
+                            <th>Delete Record</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,6 +104,7 @@ require 'db_admin_passed.php';
                                     <td><?php echo $row['full_name']; ?></td>
                                     <td><?php echo $row['email']; ?></td>
                                     <td><?php echo $row['contact_number']; ?></td>
+                                    <td><?php echo $row['room_id']; ?></td>
                                     <td><?php echo $row['room']; ?></td>
                                     <td><?php echo $row['check_in']; ?></td>
                                     <td><?php echo $row['check_out']; ?></td>
@@ -87,6 +115,10 @@ require 'db_admin_passed.php';
                                     <td><?php echo $row['checked_out_at']; ?></td>
                                     <td><?php echo $row['cancelled_at']; ?></td>
                                     <td>
+                                    <form action="" method="POST">
+                                            <input type="hidden" name="booking_id" value="<?php echo $row['id']; ?>"> 
+                                            <button type="submit" name="delete" class="neat-button">Delete</button> 
+                                    </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -101,5 +133,39 @@ require 'db_admin_passed.php';
     </div>
 </div>
 </body>
+
+<style>
+ 
+.neat-button {
+  background-color: #3498db; 
+  color: white; 
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  margin: 5px;
+}
+
+
+.neat-button:hover {
+  background-color: #2980b9; 
+  transform: translateY(-4px); 
+}
+
+
+.neat-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.6); 
+}
+
+
+.neat-button:active {
+  background-color: #1d6fa5; 
+  transform: translateY(0); 
+}
+</style>
 
 </html>

@@ -35,6 +35,8 @@ require 'adminpages/db_admin.php';
                 <hr>
                 <a href="adminpages/roombooking_denied.php" class="menu-item">Denied Books</a>
                 <hr>
+                <a href="adminpages/room_availability.php" class="menu-item">Available Rooms</a>
+                <hr>
                 <a href="adminpages/manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
                 <a href="adminpages/messages.php" class="menu-item">Messages</a>
@@ -56,13 +58,14 @@ require 'adminpages/db_admin.php';
 
             <!-- Table Container -->
             <div class="table-container">
-                <table>
+                <table border="1">
                     <thead>
                         <tr>
                             <th>User ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact Number</th>
+                            <th>Room ID</th>
                             <th>Room</th>
                             <th>Check-In</th>
                             <th>Check-Out</th>
@@ -80,6 +83,7 @@ require 'adminpages/db_admin.php';
                                     <td><?php echo $row['full_name']; ?></td>
                                     <td><?php echo $row['email']; ?></td>
                                     <td><?php echo $row['contact_number']; ?></td>
+                                    <td><?php echo $row['room_id']; ?></td>
                                     <td><?php echo $row['room']; ?></td>
                                     <td><?php echo $row['check_in']; ?></td>
                                     <td><?php echo $row['check_out']; ?></td>
@@ -90,6 +94,7 @@ require 'adminpages/db_admin.php';
                                         <!-- Form to submit the booking id for approval or denial -->
                                         <form action="adminpages/approve.php" method="POST">
                                             <input type="hidden" name="booking_id" value="<?php echo $row['id']; ?>"> <!-- Changed user_id to booking_id -->
+                                            <input type="hidden" name="room_id" value="<?php echo $row['room_id']; ?>">
                                             <button type="submit" name="approve" class="neat-button">Approve</button> 
                                             <button type="submit" name="deny" class="neat-button">Deny</button> 
                                         </form>

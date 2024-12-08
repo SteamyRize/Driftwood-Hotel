@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2024 at 09:07 AM
+-- Generation Time: Dec 08, 2024 at 01:56 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,6 +33,7 @@ CREATE TABLE `approved_bookings` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact_number` varchar(15) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `room` varchar(50) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
@@ -46,8 +47,8 @@ CREATE TABLE `approved_bookings` (
 -- Dumping data for table `approved_bookings`
 --
 
-INSERT INTO `approved_bookings` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`, `approved_at`) VALUES
-(7, 4, 'Portia Mae', 'portiamae@gmail.com', '0987654321', 'The Oceanfront Haven', '2024-12-03', '2024-12-04', 'Paypal', '123123.00', '2024-12-05 12:24:23', '2024-12-05 12:24:35');
+INSERT INTO `approved_bookings` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room_id`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`, `approved_at`) VALUES
+(2, 4, 'Portia Mae', 'portiamae@gmail.com', '0987654321', 3, 'The Driftwood Villa', '2024-12-08', '2024-12-09', 'Gcash', '6000.00', '2024-12-08 12:55:41', '2024-12-08 12:55:49');
 
 -- --------------------------------------------------------
 
@@ -57,10 +58,11 @@ INSERT INTO `approved_bookings` (`id`, `user_id`, `full_name`, `email`, `contact
 
 CREATE TABLE `bookings` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact_number` varchar(15) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `room` varchar(50) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
@@ -68,13 +70,6 @@ CREATE TABLE `bookings` (
   `amount` decimal(10,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `bookings`
---
-
-INSERT INTO `bookings` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`) VALUES
-(10, 1, 'Portia Mae', 'portiamae@gmail.com', '0987654321', 'The Tidescape Suite', '2024-12-26', '2024-12-27', 'Cash', '123123.00', '2024-12-05 11:45:03');
 
 -- --------------------------------------------------------
 
@@ -88,6 +83,7 @@ CREATE TABLE `denied_bookings` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact_number` varchar(15) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `room` varchar(50) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
@@ -96,13 +92,6 @@ CREATE TABLE `denied_bookings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `denied_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `denied_bookings`
---
-
-INSERT INTO `denied_bookings` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`, `denied_at`) VALUES
-(1, 4, 'Mary Jane', 'zoikaderaj@yahoo.com', '0987654321', 'The Tidescape Suite', '2024-12-07', '2024-12-08', 'Paypal', '123123.00', '2024-12-06 05:12:09', '2024-12-06 05:12:16');
 
 -- --------------------------------------------------------
 
@@ -143,6 +132,7 @@ CREATE TABLE `pass_books` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact_number` varchar(15) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `room` varchar(50) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
@@ -158,9 +148,40 @@ CREATE TABLE `pass_books` (
 -- Dumping data for table `pass_books`
 --
 
-INSERT INTO `pass_books` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`, `approved_at`, `checked_out_at`, `cancelled_at`) VALUES
-(1, NULL, 'tae', 'Jared@gmail.com', '0987654321', 'The Oceanfront Haven', '2024-12-12', '2024-12-13', 'Credit Card', '123123.00', '2024-12-06 06:03:40', '2024-12-06 06:03:46', NULL, '2024-12-06 06:03:52'),
-(2, 4, 'Mary Jane', 'maryjane@gmail.com', '0987654321', 'The Driftwood Villa', '2024-12-12', '2024-12-13', 'Paypal', '123123.00', '2024-12-06 06:08:15', '2024-12-06 06:08:25', NULL, '2024-12-06 06:08:31');
+INSERT INTO `pass_books` (`id`, `user_id`, `full_name`, `email`, `contact_number`, `room_id`, `room`, `check_in`, `check_out`, `payment_option`, `amount`, `created_at`, `approved_at`, `checked_out_at`, `cancelled_at`) VALUES
+(1, 4, 'Jared Akio', 'Jared@gmail.com', '0987654321', 1, 'The Oceanfront Haven', '2024-12-10', '2024-12-11', 'Paypal', '123123.00', '2024-12-08 12:23:58', '2024-12-08 12:24:05', NULL, '2024-12-08 12:52:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `room_name` varchar(100) NOT NULL,
+  `room_type` varchar(50) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `status` enum('Available','Occupied') NOT NULL DEFAULT 'Available',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `room_id`, `room_name`, `room_type`, `price`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'The Oceanfront Haven', 'Suite', '2000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:52:05'),
+(2, 2, 'The Tidescape Suite', 'Suite', '2000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(3, 3, 'The Driftwood Villa', 'Villa', '2500.00', 'Occupied', '2024-12-08 12:23:14', '2024-12-08 12:55:49'),
+(4, 4, 'The Oceanview Retreat', 'Suite', '2000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(5, 5, 'The Coastal Breeze Suite', 'Suite', '2000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(6, 6, 'The Shoreline Luxe Suite', 'Suite', '2500.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(7, 7, 'The Pearl Suite', 'Suite', '3000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(8, 8, 'The Driftwood Loft', 'Loft', '3000.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14'),
+(9, 9, 'The Oceanic Sanctuary', 'Loft', '3500.00', 'Available', '2024-12-08 12:23:14', '2024-12-08 12:23:14');
 
 -- --------------------------------------------------------
 
@@ -223,6 +244,12 @@ ALTER TABLE `pass_books`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -238,19 +265,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `approved_bookings`
 --
 ALTER TABLE `approved_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `denied_bookings`
 --
 ALTER TABLE `denied_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -262,7 +289,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `pass_books`
 --
 ALTER TABLE `pass_books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

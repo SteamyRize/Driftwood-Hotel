@@ -13,25 +13,32 @@ try {
 
     // SQL query to create the event
     $event_sql = "
-       CREATE EVENT IF NOT EXISTS move_to_pass_books
+        CREATE EVENT IF NOT EXISTS move_to_pass_books
         ON SCHEDULE EVERY 1 MINUTE
         DO
         BEGIN
             -- Move approved bookings that have passed their check_out date to pass_books
-            INSERT INTO pass_books (user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
-            SELECT user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, NOW(), NULL
+            INSERT INTO pass_books (user_id, full_name, email, contact_number, room_id, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
+            SELECT user_id, full_name, email, contact_number, room_id, room, check_in, check_out, payment_option, amount, created_at, approved_at, NOW(), NULL
             FROM approved_bookings
             WHERE check_out <= CURDATE();
 
             -- Delete the records from approved_bookings that were moved
             DELETE FROM approved_bookings WHERE check_out <= CURDATE();
+
+            -- Update room status to 'Available' after cancellation
+            UPDATE rooms
+            SET status = 'Available'
+            WHERE room_id IN (
+                SELECT room_id
+                FROM approved_bookings
+                WHERE check_out <= CURDATE()
+            );
         END;
     ";
 
     // Execute the SQL query to create the event
     $pdo->exec($event_sql);
-    
- 
 
     // Fetch approved bookings from the database
     $stmt = $pdo->query("SELECT * FROM approved_bookings");
@@ -41,20 +48,36 @@ try {
     echo "Error creating event or fetching bookings: " . $e->getMessage();
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $booking_id = $_POST['booking_id'] ?? null;
 
     if ($booking_id) {
         try {
+            // Establish a connection to the database
+            $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             // Move booking to pass_books and set cancelled_at
             $moveBookingQuery = "
-                INSERT INTO pass_books (user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
-                SELECT user_id, full_name, email, contact_number, room, check_in, check_out, payment_option, amount, created_at, approved_at, NULL, NOW()
+                INSERT INTO pass_books (user_id, full_name, email, contact_number, room_id, room, check_in, check_out, payment_option, amount, created_at, approved_at, checked_out_at, cancelled_at)
+                SELECT user_id, full_name, email, contact_number, room_id, room, check_in, check_out, payment_option, amount, created_at, approved_at, NULL, NOW()
                 FROM approved_bookings
                 WHERE id = :booking_id
             ";
             $stmt = $pdo->prepare($moveBookingQuery);
+            $stmt->execute(['booking_id' => $booking_id]);
+
+            // Update room status to 'Available' after cancellation
+            $updateRoomStatusQuery = "
+                UPDATE rooms
+                SET status = 'Available'
+                WHERE room_id IN (
+                    SELECT room_id
+                    FROM approved_bookings
+                    WHERE id = :booking_id
+                )
+            ";
+            $stmt = $pdo->prepare($updateRoomStatusQuery);
             $stmt->execute(['booking_id' => $booking_id]);
 
             // Delete the booking from approved_bookings
@@ -62,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare($deleteBookingQuery);
             $stmt->execute(['booking_id' => $booking_id]);
 
-            echo "<script>alert('Booking Cancelled!'); window.location.href='../adminpage.php';</script>";
+            echo "<script>alert('Booking Cancelled and Room Status Updated!'); window.location.href='../adminpage.php';</script>";
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -70,10 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Invalid Booking ID.";
     }
 }
-
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,6 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <hr>
             <a href="roombooking_denied.php" class="menu-item">Denied Books</a>
             <hr>
+            <a href="room_availability.php" class="menu-item">Available Rooms</a>
+            <hr>
             <a href="manageuser.php" class="menu-item">Manage user account</a>
             <hr>
             <a href="messages.php" class="menu-item">Messages</a>
@@ -119,13 +142,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Table Container -->
         <div class="table-container">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>User ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact Number</th>
+                        <th>Room ID</th>
                         <th>Room</th>
                         <th>Check-In</th>
                         <th>Check-Out</th>
@@ -144,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <td><?php echo $row['full_name']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td><?php echo $row['contact_number']; ?></td>
+                                <td><?php echo $row['room_id']; ?></td>
                                 <td><?php echo $row['room']; ?></td>
                                 <td><?php echo $row['check_in']; ?></td>
                                 <td><?php echo $row['check_out']; ?></td>
