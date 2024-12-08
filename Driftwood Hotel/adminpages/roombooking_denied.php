@@ -33,6 +33,8 @@ require 'db_admin_denied.php';
             <hr>
             <a href="roombooking_denied.php" class="menu-item active">Denied Books</a>
             <hr>
+            <a href="room_availability.php" class="menu-item">Available Rooms</a>
+            <hr>
             <a href="manageuser.php" class="menu-item">Manage user account</a>
             <hr>
             <a href="messages.php" class="menu-item">Messages</a>
@@ -48,7 +50,7 @@ require 'db_admin_denied.php';
 
         <!-- Table Container -->
         <div class="table-container">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>User ID</th>

@@ -35,6 +35,8 @@ require 'adminpages/db_admin.php';
                 <hr>
                 <a href="adminpages/roombooking_denied.php" class="menu-item">Denied Books</a>
                 <hr>
+                <a href="adminpages/room_availability.php" class="menu-item">Available Rooms</a>
+                <hr>
                 <a href="adminpages/manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
                 <a href="adminpages/messages.php" class="menu-item">Messages</a>
@@ -56,7 +58,7 @@ require 'adminpages/db_admin.php';
 
             <!-- Table Container -->
             <div class="table-container">
-                <table>
+                <table border="1">
                     <thead>
                         <tr>
                             <th>User ID</th>

@@ -1,25 +1,24 @@
 <?php
-session_start(); // Start the session
 
-// Replace with your database credentials
-$host = "localhost";
-$db = "driftwoodhotel";
-$user = "root";
-$password = "";
+$host = 'localhost'; 
+$dbname = 'driftwoodhotel'; 
+$username = 'root'; 
+$password = ''; 
 
 try {
-    // Connect to the database
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $password);
+   
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Retrieve messages
-    $stmt = $pdo->query("SELECT * FROM messages ORDER BY created_at DESC");
-    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    $stmt = $pdo->query("SELECT id, room_name, status FROM rooms");
+    $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-    exit;
+    echo "Error fetching rooms: " . $e->getMessage();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +51,11 @@ try {
                 <hr>
                 <a href="roombooking_denied.php" class="menu-item">Denied Books</a>
                 <hr>
-                <a href="room_availability.php" class="menu-item">Available Rooms</a>
+                <a href="room_availability.php" class="menu-item active">Available Rooms</a>
                 <hr>
                 <a href="manageuser.php" class="menu-item">Manage user account</a>
                 <hr>
-                <a href="messages.php" class="menu-item active">Messages</a>
+                <a href="messages.php" class="menu-item">Messages</a>
                 <hr>
                 
             </nav>
@@ -71,28 +70,22 @@ try {
             <!-- Table Container -->
             <div class="table-container">
                 <table border="1">
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>First Name</th>
-                        <th>Surname</th>
-                        <th>Email</th>
-                        <th>Message</th>
-                        <th>Created At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($messages as $message): ?>
+                    <thead>
                         <tr>
-                            <td><?= htmlspecialchars($message['user_id']) ?></td>
-                            <td><?= htmlspecialchars($message['first_name']) ?></td>
-                            <td><?= htmlspecialchars($message['surname']) ?></td>
-                            <td><?= htmlspecialchars($message['email']) ?></td>
-                            <td><?= nl2br(htmlspecialchars($message['message'])) ?></td>
-                            <td><?= htmlspecialchars($message['created_at']) ?></td>
+                            <th>Room ID</th>
+                            <th>Room Name</th>
+                            <th>Status</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($rooms as $room): ?>
+                            <tr>
+                                <td><?php echo $room['id']; ?></td>
+                                <td><?php echo $room['room_name']; ?></td>
+                                <td><?php echo $room['status']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
             </table>
         </div>
     </div>

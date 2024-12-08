@@ -57,7 +57,7 @@ require 'bookings_query.php';
         
                     <div class="table-container">
                         <h2>Your Denied Bookings</h2>
-                        <table>
+                        <table border="1">
                             <thead>
                                 <tr>
                                     <th>User ID</th>

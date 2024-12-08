@@ -56,7 +56,7 @@ require 'bookings_query.php';
             <!-- Table Container -->
                 <div class="table-container">
                         <h2>Your Pending Bookings</h2>
-                        <table>
+                        <table border="1">
                             <thead>
                                 <tr>
                                     <th>User ID</th>
