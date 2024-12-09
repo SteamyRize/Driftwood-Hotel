@@ -30,7 +30,7 @@ require '../logged_in.php';
             <a href="../index.php#Contact">Contact Us</a>
 
         </nav>
-        <?php SignUser($is_logged_in, $username); ?>
+        <?php SignUser1($is_logged_in, $username); ?>
 
 
     </header>
